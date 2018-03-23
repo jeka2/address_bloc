@@ -94,5 +94,23 @@ require_relative '../models/address_book'
        entry_five = book.entries[4]
        check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
      end
+     
+     it "imports the 1st entry from the second file" do
+        book.import_from_csv("entries_2.csv")
+        entry_two_one = book.entries[0]
+        check_entry(entry_two_one, "Jerry", "555-555-4444", "jerry@blocmail.com")
+     end
+     
+     it "imports the 2nd entry from the second file" do
+        book.import_from_csv("entries_2.csv")
+        entry_two_two = book.entries[1]
+        check_entry(entry_two_two, "Larry", "555-555-3333", "larry@blocmail.com")
+     end
+     
+     it "imports the 3rd entry from the second file" do
+        book.import_from_csv("entries_2.csv")
+        entry_two_three = book.entries[2]
+        check_entry(entry_two_three, "Tom", "555-555-5555", "tom@blocmail.com")
+     end
    end
  end
