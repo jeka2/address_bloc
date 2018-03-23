@@ -16,7 +16,8 @@ class MenuController
        puts "3 - Search for an entry"
        puts "4 - Import entries from a CSV"
        puts "5 - View Entry by number"
-       puts "6 - Exit"
+       puts "6 - Delete all entries"
+       puts "7 - Exit"
        print "Enter your selection: "
        
        selection = gets.to_i
@@ -42,6 +43,13 @@ class MenuController
          view_individual_entry
          main_menu
        when 6
+         print "You're about to delete all entries, do you wish to proceed?(y/n) "
+         choice = gets.chomp
+         unless choice == "y" || choice == "Y" || choice == "yes" || choice == "Yes"
+            main_menu        
+         end
+            detonate
+       when 7
          puts "Good-bye!"
          exit(0)
        else
@@ -101,6 +109,12 @@ class MenuController
     def delete_entry(entry)
         address_book.entries.delete(entry)
         puts "#{entry.name} has been deleted"
+    end
+    
+    def detonate
+        address_book.entries.each_with_index do |val, index|
+            val.delete_at(index)
+        end
     end
     
     def search_entries
