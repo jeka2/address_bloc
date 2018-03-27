@@ -112,9 +112,7 @@ class MenuController
     end
     
     def detonate
-        address_book.entries.each_with_index do |val, index|
-            val.delete_at(index)
-        end
+        address_book.entries.clear
     end
     
     def search_entries
